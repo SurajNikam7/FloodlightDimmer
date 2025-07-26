@@ -103,5 +103,3 @@ This project is open-source under the **MIT License**.
 For collaboration or questions, feel free to reach out on [LinkedIn](#) or via email.
 
 ---
-
-Let me know if you’d like this in PDF/Markdown format or want help creating a circuit diagram or code documentation!

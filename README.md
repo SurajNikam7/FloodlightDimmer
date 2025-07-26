@@ -1,11 +1,9 @@
 # FloodlightDimmer
 Repository for Mini Project: Power Mosfet Based Floodlight Intensity dimmer
 🌟 Floodlight Intensity Controller
-A hardware-based floodlight intensity controller that allows precise control of light output using a microcontroller. This project explores two approaches:
+A hardware-based floodlight intensity controller that allows precise control of light output using a microcontroller. 
 
-SCR-Based Phase Angle Control
-
-MOSFET-Based PWM Control
+Approach: MOSFET-Based PWM Control
 
 📌 Features
   ✅ Adjustable floodlight brightness

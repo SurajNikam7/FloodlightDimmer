@@ -1,93 +1,107 @@
-# FloodlightDimmer
-Repository for Mini Project: Power Mosfet Based Floodlight Intensity dimmer
-🌟 Floodlight Intensity Controller
-A hardware-based floodlight intensity controller that allows precise control of light output using a microcontroller. 
+Here's the updated **README.md** with the **SCR part removed** and focusing **only on the Power MOSFET-based PWM Floodlight Intensity Controller**:
 
-Approach: MOSFET-Based PWM Control
+---
 
-📌 Features
-  ✅ Adjustable floodlight brightness
-  
-  ✅ Microcontroller-based control logic
-  
-  ✅ Dual implementation: SCR and MOSFET methods
-  
-  ✅ Real-time analog control via potentiometer
+# 🌟 Floodlight Intensity Controller (PWM + MOSFET Based)
 
-  ✅ Safe and efficient circuit design
+A microcontroller-based floodlight intensity controller using **PWM** and **Power MOSFETs** for precise and efficient brightness control. This system enables real-time dimming of DC floodlights using analog input from a potentiometer.
 
-⚙️ Technologies Used
-  Approach	Components Used
-  SCR-Based	BT136/BT139 SCR, Zero-Crossing Detector, Opto-Isolator (MOC3021), Microcontroller
-  MOSFET-Based	IRF540N MOSFET, STM32F446RE (or Arduino), PWM via Timer, ADC + Potentiometer
+---
 
-🔌 Working Principle
-1. SCR-Based Triggering
-  Uses phase-angle control to adjust the point in the AC cycle at which the SCR is triggered.
-  
-  Microcontroller detects zero crossing and delays SCR triggering using a timer to control brightness.
+## 📌 Features
 
-2. MOSFET-Based PWM
-  Suitable for DC floodlights.
-  
-  Uses PWM signal to regulate duty cycle of the power delivered to the floodlight.
-  
-  Potentiometer input is read via ADC and mapped to PWM output.
+* ✅ Smooth brightness control via PWM
+* ✅ Real-time analog input using potentiometer
+* ✅ Microcontroller-controlled PWM output
+* ✅ Efficient power delivery using MOSFETs
+* ✅ Optional LCD display for brightness level
 
-🧰 Hardware Requirements
-  STM32F446RE / Arduino Uno / Other Microcontroller
-  
-  IRF540N MOSFET / BT136 SCR
-  
-  Zero-Crossing Detector Circuit
-  
-  Opto-Isolator (MOC3021)
-  
-  16x2 LCD (Optional for display)
-  
-  Potentiometer (10k)
-  
-  Floodlight (AC or DC depending on method)
-  
-  External Power Supply (12V/24V DC or 230V AC)
-  
-  Resistors, Capacitors, Breadboard/PCB, etc.
+---
 
-📋 Setup Instructions
-  Connect Potentiometer to microcontroller ADC input.
-  
-  Configure PWM output pin (for MOSFET) or triggering pin (for SCR).
-  
-  Use Timer Interrupt to vary duty cycle or delay from zero crossing.
-  
-  Display current intensity on LCD (optional).
-  
-  Power the circuit with the appropriate power source.
+## ⚙️ Technologies Used
 
-🧪 Testing & Results
-  Tested with both AC and DC floodlights.
-  
-  Smooth dimming from 0% to 100% brightness.
-  
-  No flickering in MOSFET-based PWM approach.
-  
-  SCR-based design tested with isolation to ensure safety.
+* **Microcontroller:** STM32F446RE / Arduino Uno
+* **MOSFET:** IRF540N (or any logic-level N-channel power MOSFET)
+* **PWM Control:** Timer-based PWM generation
+* **Analog Input:** ADC-based potentiometer interface
 
-🛡️ Safety Note
-  Always take proper precautions when working with AC mains voltage. Use opto-isolators and isolated power supplies. Double-check circuit insulation and grounding before testing.
+---
 
-📚 Future Improvements
-  Add wireless control (Bluetooth or Wi-Fi)
-  
-  Schedule-based or sensor-driven dimming (LDR, motion sensors)
-  
-  Mobile app interface for brightness control
-  
-  Closed-loop feedback using light sensor (LDR)
+## 🔌 Working Principle
 
-📄 License
-This project is open-source under the MIT License.
+1. A **potentiometer** is connected to the microcontroller's **ADC pin**.
+2. The microcontroller reads the analog value and maps it to a **PWM duty cycle** (0–100%).
+3. A **PWM signal** is generated on a digital output pin connected to the **gate of a Power MOSFET**.
+4. The **MOSFET** switches the DC supply to the **floodlight**, controlling its brightness based on the duty cycle.
 
-🙋‍♂️ Author
-Suraj N.
-For queries or collaboration, feel free to connect via LinkedIn or email.
+---
+
+## 🧰 Hardware Requirements
+
+* STM32F446RE / Arduino Uno (or similar MCU)
+* IRF540N / IRFZ44N MOSFET
+* DC Floodlight (12V/24V)
+* Potentiometer (10k)
+* 16x2 LCD (optional, for brightness level)
+* External Power Supply (12V/24V)
+* Flyback diode (e.g., 1N5822) for inductive protection (optional)
+* Resistors, jumper wires, breadboard or PCB
+
+---
+
+## 📋 Setup Instructions
+
+1. **Connect the potentiometer** to the ADC input of the microcontroller.
+2. **Configure PWM output** pin using a hardware timer.
+3. **Connect the MOSFET** as a low-side switch to control floodlight power.
+4. Optionally connect **LCD** to display brightness level in %.
+5. Upload the firmware and power the circuit with a proper DC supply.
+
+---
+
+## 🧪 Testing & Results
+
+* The floodlight's brightness changes smoothly from dim to full brightness.
+* System tested up to **5A current draw** without MOSFET overheating.
+* No visible flickering at PWM frequencies above 5kHz.
+* LCD shows brightness percentage (if used).
+
+---
+
+## 🛡️ Safety Note
+
+> Ensure proper **heat dissipation** using a heat sink on the MOSFET.
+> Always verify power ratings of components to avoid damage.
+> Use flyback diodes if the floodlight has inductive properties.
+
+---
+
+## 📚 Future Improvements
+
+* Add remote dimming control via **Bluetooth / Wi-Fi**
+* Automatic brightness adjustment based on ambient light (using **LDR**)
+* Mobile app interface for control
+* Overcurrent protection and thermal cutoff
+
+---
+
+## 📸 Demo
+
+![Floodlight Dimming Demo](LINK: https://drive.google.com/file/d/1Sj8K62FDzM4mcXJ_QYpKZxGtfk0Eaq9b/view?usp=sharing)
+
+---
+
+## 📄 License
+
+This project is open-source under the **MIT License**.
+
+---
+
+## 🙋‍♂️ Author
+
+**Suraj N.**
+For collaboration or questions, feel free to reach out on [LinkedIn](#) or via email.
+
+---
+
+Let me know if you’d like this in PDF/Markdown format or want help creating a circuit diagram or code documentation!
